@@ -11,32 +11,25 @@ pio.templates.default = "plotly_dark"
 # https://discuss.streamlit.io/t/streamlit-overrides-colours-of-plotly-chart/34943
 st.set_page_config(layout='wide')
 
-st.title("Example: Quantum Technologies flagged by the Defense Science Board")
-st.markdown("[Applications of Qauntum Technologies, October 2019](https://dsb.cto.mil/reports/2010s/DSB_QuantumTechnologies_Executive%20Summary_10.23.2019_SR.pdf)")
-st.write('Topic modeling for papers related to these high-level WikiData Concepts:')
-st.markdown(""" Quantum computer, Quantum cryptography, Qauntum sensor
-     Topological quantum computer, Adiabatic quantum computation, Trapped ion quantum computer,
-     One-way quantum computer, Post-quantum cryptography
-    """
-)
+st.title("Example: Papers with at least one Author affiliated with Malek Ashtar Malek Ashtar University of Technology (دانشگاه صنعتی مالک اشتر)")
+st.write("Topic modeling")
 
 @st.cache_data()
 def load_centroids():
     #dg = pd.read_csv("penguins.csv", engine="pyarrow")
   #  df = pd.read_json(df.to_json())
-    dg = pd.read_pickle('centroids2d.pkl.gz')
+    dg = pd.read_pickle('malekcentroids2d.pkl.gz')
     return dg[dg.cluster != -1]
 
 @st.cache_data()
 def load_dftriple():
-    dg = pd.read_pickle('dftriple2d.pkl.gz')
+    dg = pd.read_pickle('malekdftriple2d.pkl.gz')
     return dg
 
 @st.cache_data()
 def load_dfinfo():
-    dg = pd.read_pickle('dfinfo2d.pkl.gz')
+    dg = pd.read_pickle('malekdfinfo2d.pkl.gz')
     return dg[dg['cluster'] != -1]
-
 
 
 @st.cache_data()
@@ -96,6 +89,7 @@ def get_fig():
 centroids = load_centroids()
 dftriple = load_dftriple()
 dfinfo = load_dfinfo()
+dfinfo['cluster_'] = dfinfo["cluster"].apply(str)
 bigfig = get_fig()
 
 st.subheader("Papers and Topics")
