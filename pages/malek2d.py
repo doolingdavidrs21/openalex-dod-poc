@@ -93,7 +93,7 @@ dfinfo['cluster_'] = dfinfo["cluster"].apply(str)
 bigfig = get_fig()
 
 st.subheader("Papers and Topics")
-st.write("Use the navigation tools in the mode bar to pan and zoom. Papers are automatically clustered into subtopics. Topics are the bigger pink dots with representative keywords and phrases available on hover. Clicking on a topic or paper then triggers a report of the most prolific countries, affiliations, and authors associated with that topic.")
+st.write("Use the navigation tools in the mode bar to pan and zoom. Papers are automatically clustered into subtopics. Topics are the bigger pink dots with representative keywords and phrases available on hover. Clicking on a topic or paper then triggers a report of the most profilic countries, affiliations, and authors associated with that topic.")
 selected_point = plotly_events(bigfig, click_event=True, override_height=700)
 if len(selected_point) == 0:
     st.stop()
