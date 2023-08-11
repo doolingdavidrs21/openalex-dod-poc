@@ -32,6 +32,15 @@ def load_dfinfo():
     return dg[dg['cluster'] != -1]
 
 
+
+centroids = load_centroids()
+dftriple = load_dftriple()
+dfinfo = load_dfinfo()
+dfinfo['cluster_'] = dfinfo["cluster"].apply(str)
+
+
+
+
 @st.cache_data()
 def get_fig():
     fig_centroids = px.scatter(centroids,
@@ -86,10 +95,10 @@ def get_fig():
     return fig3
 
 
-centroids = load_centroids()
-dftriple = load_dftriple()
-dfinfo = load_dfinfo()
-dfinfo['cluster_'] = dfinfo["cluster"].apply(str)
+#centroids = load_centroids()
+#dftriple = load_dftriple()
+#dfinfo = load_dfinfo()
+#dfinfo['cluster_'] = dfinfo["cluster"].apply(str)
 bigfig = get_fig()
 
 st.subheader("Papers and Topics")
@@ -103,6 +112,8 @@ if len(selected_point) == 0:
 selected_x_value = selected_point[0]["x"]
 selected_y_value = selected_point[0]["y"]
 #selected_species = selected_point[0]["species"]
+
+
 
 try:
     df_selected = dfinfo[
@@ -125,6 +136,7 @@ try:
         hide_index=True,
         )
     selected_cluster = df_selected['cluster'].iloc[0]
+    st.write(selected_cluster)
 except:
     df_selected_centroid = centroids[
         (centroids["x"] == selected_x_value)
