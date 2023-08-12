@@ -24,26 +24,26 @@ st.markdown("""Computer Science, Physics, Materials Science,
 )
 
 @st.cache_data()
-def load_centroids():
+def load_centroids_darpa():
     #dg = pd.read_csv("penguins.csv", engine="pyarrow")
   #  df = pd.read_json(df.to_json())
     dg = pd.read_pickle('darpacentroids2d.pkl.gz')
     return dg[dg.cluster != -1]
 
 @st.cache_data()
-def load_dftriple():
+def load_dftriple_darpa():
     dg = pd.read_pickle('darpadftriple2d.pkl.gz')
     return dg
 
 @st.cache_data()
-def load_dfinfo():
+def load_dfinfo_darpa():
     dg = pd.read_pickle('darpadfinfo2d.pkl.gz')
     return dg[dg['cluster'] != -1]
 
 
 
 @st.cache_data()
-def get_fig():
+def get_fig_darpa():
     fig_centroids = px.scatter(centroids,
                            x='x',y='y',
                     color_discrete_sequence=['pink'],
@@ -97,10 +97,10 @@ def get_fig():
     return fig3
 
 
-centroids = load_centroids()
-dftriple = load_dftriple()
-dfinfo = load_dfinfo()
-bigfig = get_fig()
+centroids = load_centroids_darpa()
+dftriple = load_dftriple_darpa()
+dfinfo = load_dfinfo_darpa()
+bigfig = get_fig_darpa()
 
 #dfinfo["x_y"] = dfinfo["x"].apply(str) + ':' + dfinfo["y"].apply(str)
 

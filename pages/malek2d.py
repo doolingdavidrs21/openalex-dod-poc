@@ -15,34 +15,34 @@ st.title("Example: Papers with at least one Author affiliated with Malek Ashtar 
 st.write("Topic modeling")
 
 @st.cache_data()
-def load_centroids():
+def load_centroids_malek():
     #dg = pd.read_csv("penguins.csv", engine="pyarrow")
   #  df = pd.read_json(df.to_json())
     dg = pd.read_pickle('malekcentroids2d.pkl.gz')
     return dg[dg.cluster != -1]
 
 @st.cache_data()
-def load_dftriple():
+def load_dftriple_malek():
     dg = pd.read_pickle('malekdftriple2d.pkl.gz')
     return dg
 
 @st.cache_data()
-def load_dfinfo():
+def load_dfinfo_malek():
     dg = pd.read_pickle('malekdfinfo2d.pkl.gz')
     return dg[dg['cluster'] != -1]
 
 
 
-centroids = load_centroids()
-dftriple = load_dftriple()
-dfinfo = load_dfinfo()
+centroids = load_centroids_malek()
+dftriple = load_dftriple_malek()
+dfinfo = load_dfinfo_malek()
 dfinfo['cluster_'] = dfinfo["cluster"].apply(str)
 
 
 
 
 @st.cache_data()
-def get_fig():
+def get_fig_malek():
     fig_centroids = px.scatter(centroids,
                            x='x',y='y',
                     color_discrete_sequence=['pink'],
@@ -99,7 +99,7 @@ def get_fig():
 #dftriple = load_dftriple()
 #dfinfo = load_dfinfo()
 #dfinfo['cluster_'] = dfinfo["cluster"].apply(str)
-bigfig = get_fig()
+bigfig = get_fig_malek()
 
 st.subheader("Papers and Topics")
 st.write("Use the navigation tools in the mode bar to pan and zoom. Papers are automatically clustered into subtopics. Topics are the bigger pink dots with representative keywords and phrases available on hover. Clicking on a topic or paper then triggers a report of the most profilic countries, affiliations, and authors associated with that topic.")
