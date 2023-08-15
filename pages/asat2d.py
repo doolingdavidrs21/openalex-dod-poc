@@ -11,6 +11,11 @@ pio.templates.default = "plotly_dark"
 # https://discuss.streamlit.io/t/streamlit-overrides-colours-of-plotly-chart/34943
 st.set_page_config(layout='wide')
 
+st.markdown("""
+[China's plan for anti-satellite cyber weapon found in leaked CIA documents](https://techmonitor.ai/technology/cybersecurity/chinese-anti-satellite-cyber-weapon)
+""")
+
+
 st.title("Example: Papers with at least one Author affiliated with one of these institutions:")
 st.markdown("""
 * Nanjing University of Aeronautics and Astronautics 南京航空航天大学 latitude': 32.036007,
@@ -63,9 +68,9 @@ centroids = load_centroids_asat()
 dftriple = load_dftriple_asat()
 dfinfo = load_dfinfo_asat()
 dfinfo['cluster_'] = dfinfo["cluster"].apply(str)
-dfgeo = load_dfgeo_asat()
+#dfgeo = load_dfgeo_asat()
 
-st.map(dfgeo)
+#st.map(dfgeo)
 
 st.dataframe(centroids[['cluster','x','y','concepts','keywords']])
 
