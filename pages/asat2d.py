@@ -67,7 +67,7 @@ dfgeo = load_dfgeo_asat()
 
 st.map(dfgeo)
 
-st.dataframe(
+st.dataframe(centroids[['cluster','x','y','concepts','keywords']])
 
 @st.cache_data()
 def get_fig_asat():
