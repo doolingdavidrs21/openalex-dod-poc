@@ -67,6 +67,8 @@ dfgeo = load_dfgeo_asat()
 
 st.map(dfgeo)
 
+st.dataframe(
+
 @st.cache_data()
 def get_fig_asat():
     fig_centroids = px.scatter(centroids,
