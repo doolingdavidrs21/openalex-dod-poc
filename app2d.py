@@ -99,6 +99,8 @@ dfinfo = load_dfinfo_quantum()
 bigfig = get_fig_quantum()
 
 st.subheader("Papers and Topics")
+st.dataframe(centroids[['cluster','x','y','concepts','keywords']])
+
 st.write("Use the navigation tools in the mode bar to pan and zoom. Papers are automatically clustered into subtopics. Topics are the bigger pink dots with representative keywords and phrases available on hover. Clicking on a topic or paper then triggers a report of the most prolific countries, affiliations, and authors associated with that topic.")
 selected_point = plotly_events(bigfig, click_event=True, override_height=700)
 if len(selected_point) == 0:
